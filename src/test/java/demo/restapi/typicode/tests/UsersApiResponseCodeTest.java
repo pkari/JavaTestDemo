@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import demo.BaseTest;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.core5.http.HttpEntity;
-import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -34,7 +33,7 @@ public class UsersApiResponseCodeTest extends BaseTest {
 
     //Case 5
     @Test
-    public void testGetUsersReturnsStatusCode200() throws IOException, ParseException {
+    public void testGetUsersReturnsStatusCode200() throws IOException {
         try (CloseableHttpResponse response = usersApi.getUsers()) {
             logger.info("Test Starting: GET /users");
             assertEquals(200, response.getCode(), "Expected status code 200");
