@@ -9,17 +9,24 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-public class UsersApi {
-    private static final Logger logger = LogManager.getLogger(UsersApi.class);
+public class TypicodeApi {
+    private static final Logger logger = LogManager.getLogger(TypicodeApi.class);
     private final CloseableHttpClient httpClient;
 
-    public UsersApi() {
+    public static final String BASE_URL = "https://jsonplaceholder.typicode.com";
+    public static final String USERS_ENDPOINT = "/users";
+
+    public static String getUsersUrl() {
+        return BASE_URL + USERS_ENDPOINT;
+    }
+
+    public TypicodeApi() {
         this.httpClient = HttpClients.createDefault();
     }
 
     public CloseableHttpResponse getUsers() throws IOException {
-        logger.info("Sending GET request to: {}", ApiEndpoints.getUsersUrl());
-        HttpGet request = new HttpGet(ApiEndpoints.getUsersUrl());
+        logger.info("Sending GET request to: {}", TypicodeApi.getUsersUrl());
+        HttpGet request = new HttpGet(TypicodeApi.getUsersUrl());
         CloseableHttpResponse response = (CloseableHttpResponse) httpClient.executeOpen(null, request, null);
         logger.info("Received response with status code: {}", response.getCode());
         return response;

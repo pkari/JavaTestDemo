@@ -3,13 +3,13 @@ package demo.restapi.typicode.tests;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import demo.BaseTest;
+import demo.restapi.typicode.api.TypicodeApi;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.core5.http.HttpEntity;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import demo.restapi.typicode.api.UsersApi;
 
 import java.io.IOException;
 
@@ -17,24 +17,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Tag("api")
 public class UsersApiResponseCodeTest extends BaseTest {
-    private UsersApi usersApi;
+    private TypicodeApi typicodeApi;
 
     @BeforeEach
     public void setUp() {
-        usersApi = new UsersApi();
+        typicodeApi = new TypicodeApi();
     }
 
     @AfterEach
     public void tearDown() throws IOException {
-        if (usersApi != null) {
-            usersApi.close();
+        if (typicodeApi != null) {
+            typicodeApi.close();
         }
     }
 
     //Case 5
     @Test
     public void testGetUsersReturnsStatusCode200() throws IOException {
-        try (CloseableHttpResponse response = usersApi.getUsers()) {
+        try (CloseableHttpResponse response = typicodeApi.getUsers()) {
             logger.info("Test Starting: GET /users");
             assertEquals(200, response.getCode(), "Expected status code 200");
 
