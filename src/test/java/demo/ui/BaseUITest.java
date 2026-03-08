@@ -13,7 +13,6 @@ import java.time.Duration;
 
 public abstract class BaseUITest extends BaseTest {
     protected WebDriver driver;
-    protected CredentialHelper credentialHelper;
 
     @BeforeEach
     public void setUp() {

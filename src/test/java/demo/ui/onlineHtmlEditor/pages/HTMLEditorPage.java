@@ -17,9 +17,6 @@ public class HTMLEditorPage extends BasePage {
     @FindBy(css = "button[data-cke-tooltip-text='Underline (Ctrl+U)']")
     private WebElement underlineButton;
 
-//    @FindBy(css = "iframe.cke_wysiwyg_frame")
-//    private WebElement editorIframe;
-
     @FindBy(css = "div[aria-label='Rich Text Editor. Editing area: main. Press Alt+0 for help.']")
     private WebElement editorBody;
 
@@ -42,7 +39,6 @@ public class HTMLEditorPage extends BasePage {
 
     public void closeCookieModalIfPresent() {
         try {
-//            WebElement acceptButton = driver.findElement(By.cssSelector("button.ch2-btn.ch2-allow-all-btn.ch2-btn-primary"));
             if (acceptCookieButton.isDisplayed()) {
                 acceptCookieButton.click();
             }
@@ -86,7 +82,6 @@ public class HTMLEditorPage extends BasePage {
     }
 
     public void typeUnderlineText(String text) {
-        //driver.switchTo().defaultContent();
         wait.until(ExpectedConditions.elementToBeClickable(underlineButton));
         // Save which buttons were pressed before typing
         List<String> pressedButtons = toolbarHelper.getPressedButtonTooltips();
@@ -103,16 +98,12 @@ public class HTMLEditorPage extends BasePage {
     }
 
     public String getEditorText() {
-        //wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(editorIframe));
         String text = editorBody.getText();
-        //driver.switchTo().defaultContent();
         return text;
     }
 
     public String getEditorHtml() {
-        //wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(editorIframe));
         String html = editorBody.getAttribute("innerHTML");
-        //driver.switchTo().defaultContent();
         return html;
     }
 }

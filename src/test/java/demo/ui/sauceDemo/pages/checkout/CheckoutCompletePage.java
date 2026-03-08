@@ -20,8 +20,4 @@ public class CheckoutCompletePage extends BasePage {
         return confirmationMessage.getText();
     }
 
-    public boolean isConfirmationMessageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOf(confirmationMessage));
-        return confirmationMessage.isDisplayed();
-    }
 }

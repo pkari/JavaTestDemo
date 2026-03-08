@@ -9,13 +9,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class InventoryPage extends BasePage {
 
-    // WebElement locators
-    @FindBy(id = "add-to-cart-sauce-labs-backpack")
-    private WebElement backpackAddButton;
-
-    @FindBy(id = "add-to-cart-sauce-labs-fleece-jacket")
-    private WebElement fleeceJacketAddButton;
-
     @FindBy(css = "[data-test='shopping-cart-badge']")
     private WebElement cartBadge;
 
@@ -33,14 +26,6 @@ public class InventoryPage extends BasePage {
         WebElement addButton = driver.findElement(By.id("add-to-cart-" + productName.getId()));
         addButton.click();
     }
-
-//    public void addBackpackToCart() {
-//        addItemToCart(ProductName.BACKPACK);
-//    }
-//
-//    public void addFleeceJacketToCart() {
-//        addItemToCart(ProductName.FLEECE_JACKET);
-//   }
 
     public String getCartItemCount() {
         return cartBadge.getText();

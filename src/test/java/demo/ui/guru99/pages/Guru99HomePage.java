@@ -21,7 +21,6 @@ public class Guru99HomePage extends BasePage {
     @FindBy(xpath = "//a[contains(text(), 'Testing')]")
     private WebElement testingMenu;
 
-//    @FindBy(xpath = "//a[@href='/selenium-tutorial.html']")
     @FindBy(xpath = "//li/a[@href=\"https://www.guru99.com/selenium-tutorial.html\" and normalize-space()=\"Selenium\"]")
     private WebElement seleniumLink;
 

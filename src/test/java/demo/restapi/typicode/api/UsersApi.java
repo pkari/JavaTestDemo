@@ -17,10 +17,6 @@ public class UsersApi {
         this.httpClient = HttpClients.createDefault();
     }
 
-//    public UsersApi(CloseableHttpClient httpClient) {
-//        this.httpClient = httpClient;
-//    }
-
     public CloseableHttpResponse getUsers() throws IOException {
         logger.info("Sending GET request to: {}", ApiEndpoints.getUsersUrl());
         HttpGet request = new HttpGet(ApiEndpoints.getUsersUrl());

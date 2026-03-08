@@ -2,11 +2,8 @@ package demo.ui.commonUi;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CredentialHelper {
     public static JsonNode credentials;
