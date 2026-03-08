@@ -38,7 +38,6 @@ public class Guru99HomePage extends BasePage {
         // Switch to iframe
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(bottomIframe));
 
-        // Click the image
         wait.until(ExpectedConditions.elementToBeClickable(iframeImage));
         iframeImage.click();
 

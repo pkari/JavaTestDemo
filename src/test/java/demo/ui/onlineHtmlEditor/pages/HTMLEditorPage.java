@@ -50,50 +50,38 @@ public class HTMLEditorPage extends BasePage {
     public void typeTextInEditor(String text) {
         wait.until(ExpectedConditions.visibilityOf(editorBody));
 
-        // Save which buttons were pressed before typing
         List<String> pressedButtons = toolbarHelper.getPressedButtonTooltips();
-
-        // Turn off all formatting buttons
         toolbarHelper.ensureAllFormattingButtonsOff();
 
-        // Type the text
         editorBody.sendKeys(text);
 
-        // Restore previously pressed buttons
         toolbarHelper.restoreButtonStates(pressedButtons);
     }
 
     public void typeBoldText(String text) {
         wait.until(ExpectedConditions.elementToBeClickable(boldButton));
 
-        // Save which buttons were pressed before typing
         List<String> pressedButtons = toolbarHelper.getPressedButtonTooltips();
-
-        // Turn off all formatting buttons
         toolbarHelper.ensureAllFormattingButtonsOff();
 
         boldButton.click();
         editorBody.sendKeys(text);
         boldButton.click();
 
-        // Restore previously pressed buttons
         toolbarHelper.restoreButtonStates(pressedButtons);
 
     }
 
     public void typeUnderlineText(String text) {
         wait.until(ExpectedConditions.elementToBeClickable(underlineButton));
-        // Save which buttons were pressed before typing
-        List<String> pressedButtons = toolbarHelper.getPressedButtonTooltips();
 
-        // Turn off all formatting buttons
+        List<String> pressedButtons = toolbarHelper.getPressedButtonTooltips();
         toolbarHelper.ensureAllFormattingButtonsOff();
 
         underlineButton.click();
         editorBody.sendKeys(text);
         underlineButton.click();
 
-        // Restore previously pressed buttons
         toolbarHelper.restoreButtonStates(pressedButtons);
     }
 

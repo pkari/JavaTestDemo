@@ -27,25 +27,25 @@ public class Guru99Test extends BaseUITest {
     @Test
     public void testGuru99NavigationAndIframeInteraction() {
         logger.info("Test Starting: Guru99 Navigation and Iframe Interaction");
-        // Step 1: Open the URL
+        logger.info("Step 1: Open the URL");
         homePage.open();
 
-        // Step 2: Click on image inside iframe and switch to new tab
+        logger.info("Step 2: Click on image inside iframe and switch to new tab");
         String originalWindow = homePage.clickIframeImageAndSwitchToNewTab();
 
-        // Step 3: Verify new page title
+        logger.info("Step 3: Verify new page title");
         String actualTitle = seleniumLiveProject.getPageTitle();
         String expectedTitle = "Selenium Live Project for Practice";
         assertEquals(expectedTitle, actualTitle, "Page title should match expected title");
 
-        // Step 4: Close current tab and switch back to main window
+        logger.info("Step 4: Close current tab and switch back to main window");
         seleniumLiveProject.closeCurrentTabAndSwitchBack(originalWindow);
 
-        // Step 5: Hover on Testing menu and click Selenium link
+        logger.info("Step 5: Hover on Testing menu and click Selenium link");
         homePage.hoverOnTestingMenu();
         homePage.clickSeleniumLink();
 
-        // Step 6: Verify Submit button is displayed
+        logger.info("Step 6: Verify Submit button is displayed");
         assertTrue(seleniumPage.isSubmitButtonDisplayed(), "Submit button should be displayed on Selenium page");
     }
 }

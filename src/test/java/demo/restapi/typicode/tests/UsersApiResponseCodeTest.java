@@ -38,7 +38,7 @@ public class UsersApiResponseCodeTest extends BaseTest {
             logger.info("Test Starting: GET /users");
             assertEquals(200, response.getCode(), "Expected status code 200");
 
-            // Parse response to JSON format
+            logger.info("Parse response to JSON format");
             HttpEntity entity = response.getEntity();
             if (entity != null) {
                 ObjectMapper mapper = new ObjectMapper();

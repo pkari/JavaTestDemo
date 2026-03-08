@@ -21,29 +21,26 @@ public class HTMLEditorTest extends BaseUITest {
     @Test
     public void testRichTextEditorFormatting() {
         logger.info("Test Starting: Rich Text Editor Formatting");
-        // Step 1: Open the URL
+        logger.info("Step 1: Open the URL");
         editorPage.open();
         editorPage.closeCookieModalIfPresent();
 
-        // Step 2-4: Type text with formatting
-        // "Automation" in bold
+        logger.info("Type text with formatting");
         editorPage.typeBoldText("Automation");
         editorPage.typeTextInEditor(" ");
 
-        // "Test" in underline
         editorPage.typeUnderlineText("Test");
         editorPage.typeTextInEditor(" ");
 
-        // "Example" in normal format
         editorPage.typeTextInEditor("Example");
 
-        // Step 5: Validate the text is appearing in the rich text editor
+        logger.info("Validate the text is appearing in the rich text editor");
         String editorText = editorPage.getEditorText();
         assertTrue(editorText.contains("Automation"), "Editor should contain 'Automation'");
         assertTrue(editorText.contains("Test"), "Editor should contain 'Test'");
         assertTrue(editorText.contains("Example"), "Editor should contain 'Example'");
 
-        // Validate formatting by checking HTML
+        logger.info("Validate formatting by checking HTML");
         String editorHtml = editorPage.getEditorHtml();
         assertTrue(editorHtml.contains("<strong>Automation</strong>"), "Automation should be bold");
         assertTrue(editorHtml.contains("<u>Test</u>"), "Test should be underlined");

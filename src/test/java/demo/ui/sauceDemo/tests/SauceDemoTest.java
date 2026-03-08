@@ -38,7 +38,7 @@ public class SauceDemoTest extends BaseUITest {
     @Test
     public void testSauceDemoCheckout() {
         logger.info("Test Starting: Sauce Demo Checkout");
-        // Login using performance user
+        logger.info("Login using performance user");
         loginPage.open();
         loginPage.login(
                 CredentialHelper.getUsername("performance"),
@@ -46,27 +46,21 @@ public class SauceDemoTest extends BaseUITest {
 
         loginPage.waitForInventoryPage();
 
-        // Add items to the cart using the InventoryPage
+        logger.info("Add items to the cart using the InventoryPage");
         inventoryPage.addElement(ProductName.BACKPACK);
         inventoryPage.addElement(ProductName.FLEECE_JACKET);
 
-        // Validate cart count
         assertEquals("2", inventoryPage.getCartItemCount(), "Cart should contain 2 items");
 
-        // Go to cart
         inventoryPage.goToCart();
 
-        // Proceed to checkout
         cartPage.clickCheckout();
 
-        // Fill checkout information
         checkoutInformationPage.fillCheckoutInformation("John", "Doe", "12345");
         checkoutInformationPage.clickContinueButton();
 
-        // Complete the order
         checkoutOverviewPage.completeCheckout();
 
-        // Validate thank-you message
         String expectedMessage = "Thank you for your order";
         assertTrue(checkoutCompletePage.getConfirmationMessage().contains(expectedMessage),
                    "Confirmation message should contain '" + expectedMessage + "'");
@@ -80,7 +74,6 @@ public class SauceDemoTest extends BaseUITest {
 
         loginPage.clickLoginButton();
 
-        // Validate error message is displayed
         String expectedErrorMessage = "Epic sadface: Username is required";
         assertTrue(loginPage.isErrorMessageDisplayed(), "Error message should be displayed");
         loginPage.checkErrorMessage(expectedErrorMessage);
@@ -90,7 +83,7 @@ public class SauceDemoTest extends BaseUITest {
     @Test
     public void testCheckFooter() {
         logger.info("Test Starting: Check Footer");
-        // Login with standard user
+        logger.info("Login with standard user");
         loginPage.open();
         loginPage.login(
                 CredentialHelper.getUsername("standard"),
@@ -98,10 +91,9 @@ public class SauceDemoTest extends BaseUITest {
 
         loginPage.waitForInventoryPage();
 
-        // Scroll down to the bottom of the page
         inventoryPage.scrollToBottom();
 
-        // Validate a footer message containing 2026 and Terms of Service
+        logger.info("Validate a footer message containing 2026 and Terms of Service");
         String footerText = inventoryPage.getFooterText();
 
         assertTrue(footerText.contains("2026"), "Footer should contain '2026'");
